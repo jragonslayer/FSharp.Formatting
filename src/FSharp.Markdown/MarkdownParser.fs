@@ -619,7 +619,7 @@ let rec parseParagraphs (ctx:ParsingContext) lines = seq {
       yield! parseParagraphs ctx lines 
   | HtmlBlock(code, Lines.TrimBlankStart lines) when 
         ( let all = String.concat ctx.Newline code
-          not (all.StartsWith("<http://")) && not (all.StartsWith("<ftp://")) && not (all.Contains("@")) ) ->
+          not (all.StartsWith("<http://")) && not (all.StartsWith("<https://")) &&  not (all.StartsWith("<ftp://")) && not (all.Contains("@")) ) ->
       let all = String.concat ctx.Newline code
       yield InlineBlock(all)
       yield! parseParagraphs ctx lines 
